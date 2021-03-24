@@ -58,7 +58,7 @@ Public Class Form1
             Data = JsonConvert.DeserializeObject(Of List(Of WorkDay))(File.ReadAllText(SavePath), JsonSettings)
         End If
 
-        If Data.Last().TimeStamps.Last().Type = WorkDay.TimeStamp.TimeStampType.Start Then EnableStop()
+        If Not Data.Count = 0 AndAlso Data.Last().TimeStamps.Last().Type = WorkDay.TimeStamp.TimeStampType.Start Then EnableStop()
     End Sub
 
 
