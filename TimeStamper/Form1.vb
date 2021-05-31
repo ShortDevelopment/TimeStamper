@@ -35,11 +35,11 @@ Public Class Form1
     Public ReadOnly Property SavePath As String
         Get
             Dim monday = DateTime.Today.AddDays(-CInt(If(DateTime.Today.DayOfWeek = DayOfWeek.Sunday, 7, DateTime.Today.DayOfWeek)) + CInt(DayOfWeek.Monday))
-            Dim dir = Path.Combine(Application.StartupPath, Date.Today.Year.ToString())
+            Dim dir = Path.Combine(Application.StartupPath, monday.Year.ToString())
             If Not Directory.Exists(dir) Then Directory.CreateDirectory(dir)
-            dir = Path.Combine(dir, Date.Today.ToString("MM MMMM"))
+            dir = Path.Combine(dir, monday.ToString("MM MMMM"))
             If Not Directory.Exists(dir) Then Directory.CreateDirectory(dir)
-            Return Path.Combine(dir, $"Woche {monday.ToString("dd")}. {Date.Today.ToString("MMMM")}.json")
+            Return Path.Combine(dir, $"Woche {monday.ToString("dd")}. {monday.ToString("MMMM")}.json")
         End Get
     End Property
 
